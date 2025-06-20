@@ -23,7 +23,8 @@
     </div>
 
     <button @click="login" class="btn btn-primary">Login</button>
-    
+
+    <div v-if="error" class="alert alert-danger mt-3">{{error}}</div>
     <p class="lead">Connect with trusted walkers for your beloved dog!</p>
 
     <a href="owner-dashboard.html" class="btn btn-outline-primary me-2">Owner Dashboard</a>

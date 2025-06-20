@@ -106,6 +106,9 @@ app.use(express.static(path.join(__dirname, 'public')));
     const dogsRouter = require('./routes/dogs');
     app.use('/api/dogs', dogsRouter);
 
+    const walkRequestsRouter = require('./routes/walkrequests');
+    app.use('/api/walkrequests', walkRequestsRouter);
+
   } catch (err) {
     console.error('Error setting up database. Is MySQL running?', err);
   }

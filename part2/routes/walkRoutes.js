@@ -45,13 +45,6 @@ router.post('/:id/apply', async (req, res) => {
   }
 
   try {
-    const [existing] = await db.query(`
-      SELECT * FROM WalkApplications WHERE request_id = ? AND walker_id = ?
-    `, [requestId, walker_id]);
-
-    if (existing.length > 0) {
-      return res.status(400).json({ error: 'You have already applied for this walk' });
-    }
 
     await db.query(`
       INSERT INTO WalkApplications (request_id, walker_id)

@@ -122,8 +122,9 @@
         async function loadMyDogs(){
           try{
             const res = await fetch('api/dogs/my-dogs');
-            if(!res.ok) throw new Error('Failed to fetch dogs')
-          }
+            if(!res.ok) throw new Error('Failed to fetch dogs');
+            myDogs.value = await res.json();
+          } catch
         }
 
         onMounted(() => {

@@ -119,6 +119,12 @@
           }
         }
 
+        async function loadMyDogs(){
+          try{
+            const res = await fetch('api/dogs/my-dogs')
+          }
+        }
+
         onMounted(() => {
           loadWalks();
           loadMyDogs();

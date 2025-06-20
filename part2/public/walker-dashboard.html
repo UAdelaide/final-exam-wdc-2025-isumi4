@@ -59,18 +59,20 @@
         }
 
         async function getCurrentUser() {
-          const res = await fetch('/api/users/me', {
-
-            credentials: 'include'
-          });
-
-          if (!res.ok) {
-            const result = await res.json();
-            return Array.isArray(user) ? user[0] : user;
-            throw new Error('Not logged in');
-          }
-
-          return await res.json();
+          try {
+    const res = await fetch('/api/users/me', { credentials: 'include' });
+    if (!res.ok) {
+      throw new Error('Not logged in');
+    }
+    const text = await res.text();
+    if (!text) {
+      throw new Error('Empty response from server');
+    }
+    return JSON.parse(text);
+  } catch (err) {
+    error.value = err.message;
+    return null;
+  }
         }
 
         async function applyToWalk(requestId) {

@@ -121,7 +121,7 @@
                         const photoJson = await photoRes.json();
                         return{
                             ...dog,
-                            photo: photo.Json.message
+                            photo: photoJson.message
                         };
                     })
                 );

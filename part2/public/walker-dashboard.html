@@ -62,9 +62,9 @@
           try {
             const res = await fetch('/api/users/me');
             if (!res.ok) throw new Error('Not logged in');
-            return await res.json();
+            const data= res.json();
           } catch (err) {
-            error.value = 'Unable ro get current user';
+            error.value = 'Unable to get current user';
             return null;
           }
       }

@@ -42,6 +42,9 @@
         moveButton(event){
             const btn = event.target;
             const  container = btn.parentElement;
+
+            const maxX = container.clientWidth - btn.offsetWidth;
+            
         }
       }
     }).mount('#app');

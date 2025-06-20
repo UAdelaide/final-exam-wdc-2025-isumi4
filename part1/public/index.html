@@ -155,7 +155,7 @@
           this.dogImage = data.message;
         },
         changeFact(){
-            (this.currentFactIndex + 1) % this.facts.length;
+            this.currentFactIndex = (this.currentFactIndex + 1) % this.facts.length;
             this.currentFact = this.facts[this.currentFactIndex];
         },
         moveButton(event){

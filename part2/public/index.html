@@ -107,7 +107,9 @@
             });
         },
         async loadDogs(){
-            
+            try{
+                const res = await fetch('/api/dogs');
+            }
         }
     }
     }).mount('#app');

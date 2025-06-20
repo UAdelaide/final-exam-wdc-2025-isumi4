@@ -50,7 +50,8 @@
             const randomY = Math.floor(Math.random()*maxY);
 
             btn.style.position = 'absolute';
-            btn.style.left
+            btn.style.left = randomX + 'px';
+            btn.style.top = randomY + 'py';
         }
       }
     }).mount('#app');

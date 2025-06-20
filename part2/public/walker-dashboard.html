@@ -60,19 +60,19 @@
 
         async function getCurrentUser() {
           try {
-    const res = await fetch('/api/users/me', { credentials: 'include' });
-    if (!res.ok) {
-      throw new Error('Not logged in');
-    }
-    const text = await res.text();
-    if (!text) {
-      throw new Error('Empty response from server');
-    }
-    return JSON.parse(text);
-  } catch (err) {
-    error.value = err.message;
-    return null;
-  }
+            const res = await fetch('/api/users/me', { credentials: 'include' });
+            if (!res.ok) {
+              throw new Error('Not logged in');
+            }
+            const text = await res.text();
+            if (!text) {
+              throw new Error('Empty response from server');
+            }
+            return JSON.parse(text);
+          } catch (err) {
+            error.value = err.message;
+            return null;
+          }
         }
 
         async function applyToWalk(requestId) {

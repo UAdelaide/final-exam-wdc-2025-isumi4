@@ -40,22 +40,32 @@ router.post('/:id/apply', async (req, res) => {
   const requestId = req.params.id;
   const { walker_id } = req.body;
 
+  if (!walker_id || !requestId) {
+    return res.status(400).json({ error: 'Missing walker_id or requestId' });
+  }
+
   try {
+    const [existing] = await db.query(`
+      SELECT * FROM WalkApplications WHERE request_id = ? AND walker_id = ?
+    `, [requestId, walker_id]);
+
+    if (existing.length > 0) {
+      return res.status(400).json({ error: 'You have already applied for this walk' });
+    }
+
     await db.query(`
       INSERT INTO WalkApplications (request_id, walker_id)
       VALUES (?, ?)
     `, [requestId, walker_id]);
 
     await db.query(`
-      UPDATE WalkRequests
-      SET status = 'accepted'
-      WHERE request_id = ?
+      UPDATE WalkRequests SET status = 'accepted' WHERE request_id = ?
     `, [requestId]);
 
     res.status(201).json({ message: 'Application submitted' });
   } catch (error) {
-    console.error('SQL Error:', error);
-    res.status(500).json({ error: 'Failed to apply for walk' });
+    console.error('SQL Error applying to walk:', error.message);
+    res.status(500).json({ error: error.message || 'Failed to apply for walk' });
   }
 });
 

@@ -90,6 +90,7 @@
           });
 
           if (!res.ok) {
+            const result = await res.json()
             throw new Error('Not logged in');
           }
 

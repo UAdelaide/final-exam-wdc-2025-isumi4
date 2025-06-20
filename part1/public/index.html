@@ -26,7 +26,13 @@
             data(){
                 return{
                     dogImage: ''
-                }
+                };
+            },
+            mounted(){
+                this.fetchDog();
+            },
+            methods: {
+                async fetchDog()
             }
         })
 </body>

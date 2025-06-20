@@ -58,6 +58,20 @@
           }
         }
 
+        async function getCurrentUser() {
+          const res = await fetch('/api/users/me', {
+
+            credentials: 'include'  // ← this is crucial
+          });
+
+          if (!res.ok) {
+            const result = await res.json();
+            throw new Error('Not logged in');
+          }
+
+          return await res.json(); // should return { user_id, ... }
+        }
+
         async function applyToWalk(requestId) {
           const user = await getCurrentUser();
 
@@ -81,20 +95,6 @@
             error.value = err.message;
             message.value = '';
           }
-        }
-
-        async function getCurrentUser() {
-          const res = await fetch('/api/users/me', {
-
-            credentials: 'include'  // ← this is crucial
-          });
-
-          if (!res.ok) {
-            const result = await res.json();
-            throw new Error('Not logged in');
-          }
-
-          return await res.json(); // should return { user_id, ... }
         }
 
         onMounted(() => {

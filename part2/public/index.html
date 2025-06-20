@@ -73,6 +73,7 @@
                 }
             })
             .catch(err => {
+                console.error('Fetch error:', err);
                 this.error = 'Login failed. Please try again.';
             });
         }

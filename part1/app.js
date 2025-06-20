@@ -4,8 +4,6 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mysql = require('mysql2/promise');
 
-const dogsRouter = require('./routes/dogs');
-
 var app = express();
 
 app.use(logger('dev'));
@@ -13,30 +11,29 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-let db;
+app.use(express.static(path.join(__dirname, 'public')));
 
+// Async IIFE to setup DB
 (async () => {
   try {
-    // Connect to MySQL server (no specific DB yet)
     const connection = await mysql.createConnection({
       host: 'localhost',
       user: 'root',
-      password: '' // Update your MySQL password if needed
+      password: ''
     });
 
-    // Create database if it doesn't exist
     await connection.query('CREATE DATABASE IF NOT EXISTS DogWalkService');
     await connection.end();
 
-    // Connect to dogwalksdb
-    db = await mysql.createConnection({
+    const db = await mysql.createConnection({
       host: 'localhost',
       user: 'root',
       password: '',
       database: 'DogWalkService'
     });
 
-    // Create necessary tables
+    app.locals.db = db; // ✅ Share db with routes
+
     await db.execute(`
       CREATE TABLE IF NOT EXISTS Users (
         user_id INT PRIMARY KEY,
@@ -78,7 +75,6 @@ let db;
       )
     `);
 
-    // Insert sample data only if Users table is empty
     const [userCount] = await db.execute('SELECT COUNT(*) AS count FROM Users');
     if (userCount[0].count === 0) {
       await db.execute(`
@@ -108,11 +104,13 @@ let db;
       `);
     }
 
+    // ✅ Mount routes AFTER db is ready
+    const dogsRouter = require('./routes/dogs');
+    app.use('/api/dogs', dogsRouter);
+
   } catch (err) {
     console.error('Error setting up database. Is MySQL running?', err);
   }
 })();
-
-app.use(express.static(path.join(__dirname, 'public')));
 
 module.exports = app;

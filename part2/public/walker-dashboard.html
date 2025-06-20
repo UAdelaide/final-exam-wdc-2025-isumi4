@@ -61,7 +61,7 @@
         async function getCurrentUser() {
           const res = await fetch('/api/users/me', {
 
-            credentials: 'include'  // ← this is crucial
+            credentials: 'include'
           });
 
           if (!res.ok) {
@@ -70,7 +70,7 @@
             throw new Error('Not logged in');
           }
 
-          return await res.json(); // should return { user_id, ... }
+          return await res.json();
         }
 
         async function applyToWalk(requestId) {

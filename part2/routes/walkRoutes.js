@@ -51,7 +51,9 @@ router.post('/:id/apply', async (req, res) => {
     `, [requestId, walker_id]);
 
     await db.query(`
-      UPDATE WalkRequests SET status = 'accepted' WHERE request_id = ?
+      UPDATE WalkRequests
+      SET status = 'accepted'
+      WHERE request_id = ?
     `, [requestId]);
 
     console.log("Apply Route - requestId:", requestId, "walker_id:", walker_id);

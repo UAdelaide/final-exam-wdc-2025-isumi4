@@ -90,7 +90,8 @@
     if(logoutBtn){
         logoutBtn.addEventListener('click', () => {
             fetch('api/users/logout', {
-                
+                method: 'POST',
+                credentials: 'include'
             })
         })
     }

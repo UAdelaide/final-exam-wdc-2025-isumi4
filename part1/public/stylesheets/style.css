@@ -44,6 +44,8 @@ body {
   padding: 3px 4px;
   cursor: pointer;
   border-radius: 0;
+  width: 150px;
+  heigh: 40
 }
 
 .btn1 {
@@ -80,8 +82,4 @@ body {
 .button-container{
   position: relative;
   height: 600px;
-}
-
-.fetch-button{
-  
 }

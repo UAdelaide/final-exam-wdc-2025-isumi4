@@ -59,15 +59,17 @@
         }
 
         async function getCurrentUser() {
-        const res = await fetch('/api/users/me', {
-          credentials: 'include'  // crucial to send cookies/session
-        });
+          const currentUser = await getCurrentUser();
+          if (!currentUser) {
+            error.value = 'Not logged in. Please login again.';
+            return;
+          }
 
-        if (!res.ok) {
-          const errorJson = await res.json();
-          throw new Error(errorJson.error || 'Unknown error');
-        }
-        return res.json();
+          const res = await fetch(`/api/walks/${requestId}/apply`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ walker_id: currentUser.user_id })  // use currentUser here!
+          });
       }
 
         async function applyToWalk(requestId) {

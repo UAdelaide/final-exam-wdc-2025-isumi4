@@ -155,10 +155,3 @@ section {
   display: none;
 }
 
-input:focus{
-  background-color: #fff3cd !important;
-}
-
-input.form-control:focus{
-  background-color: #fff3cd !important;
-}

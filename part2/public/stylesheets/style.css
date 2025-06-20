@@ -156,5 +156,5 @@ section {
 }
 
 input:focus{
-  background-color: #fff3cd;
+  background-color: #fff3cd !important;
 }

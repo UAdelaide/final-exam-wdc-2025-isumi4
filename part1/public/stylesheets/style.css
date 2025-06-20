@@ -1,55 +1,72 @@
 body {
-  font-family: 'Papyrus', cursive;
-  background-image: url('https://www.transparenttextures.com/patterns/brick-wall.png');
-  color: #ff00ff;
-  margin: 0;
-}
-
-.container{
-  margin: 100px 200px;
-  text-align: justify;
-}
-
-h1{
-  font-size: 50px;
-  text-decoration: underline;
-  animation: flicker 1s infinite;
-}
-
-@keyframes flicker{
-  0%   { opacity: 1; }
-  50%  { opacity: 0.2; }
-  100% { opacity: 1; }
-}
-
-.dog-img {
-  width: 500px;
-  height: 500px;
-  border-radius: 30%;
-  filter: sepia(100%);
-}
-
-button-container {
+  font-family: sans-serif;
   display: flex;
-  flex-direction: row;
-  gap: 60px;
-  margin-top: 50px;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
 }
-
-
+#app {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+}
+h1 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 2.5em;
+}
+.dog-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 2px solid #ddd;
+}
+p {
+  color: #555;
+  font-size: 1.1em;
+  margin-bottom: 25px;
+}
+.button-container {
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically for better kinematic flow */
+  gap: 15px; /* Space between buttons */
+  margin-top: 20px;
+}
 .fetch-button {
-  padding: 25px;
-  background-color: #00ff00;
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 25px;
   border: none;
-  font-size: 24px;
-  cursor: none;
-  border-radius: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 100%; /* Make buttons full width for easier clicking */
 }
-
-.fetch-button:focus {
-  outline: none;
+.fetch-button:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
 }
-
-a {
-  color: #00B7FF;
+.fetch-button:active {
+  background-color: #367c39;
+  transform: translateY(0);
+}
+/* Basic responsive adjustments */
+@media (min-width: 640px) {
+  .button-container {
+      flex-direction: row; /* Buttons side-by-side on larger screens */
+      justify-content: center;
+  }
+  .fetch-button {
+      width: auto; /* Auto width on larger screens */
+  }
 }

@@ -4,6 +4,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mysql = require('mysql2/promise');
 
+const dogsRouter = require('./routes/dogs');
+
 var app = express();
 
 app.use(logger('dev'));
@@ -105,7 +107,6 @@ let db;
         (2, 2, 3, 4)
       `);
     }
-    app.use('/api/dogs', dogsRouter(db));
 
   } catch (err) {
     console.error('Error setting up database. Is MySQL running?', err);

@@ -8,6 +8,8 @@ router.get('/my-dogs', async (req, res) => {
     }
     try{
         const ownerId = req.session.user.id;
-        const [rows] = await db.query('SELECT dog_id, name ')
+        const [rows] = await db.query('SELECT dog_id, name FROM Dogs WHERE owner_id = ?', [ownerId]);
+        res.json(rows);
+        
     }
 })

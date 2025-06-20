@@ -1,72 +1,78 @@
 body {
-  font-family: sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #f0f0f0;
   margin: 0;
-  padding: 20px;
-  box-sizing: border-box;
+  background: linear-gradient(45deg, #f06, #4d9f0c);
+  font-family: Comic Sans MS, cursive;
+  color: #00ffff;
+  overflow-x: hidden;
 }
-#app {
-  background-color: #ffffff;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+.neon-blink {
+  font-size: 50px;
   text-align: center;
-  max-width: 600px;
-  width: 100%;
+  text-shadow: 0 0 5px #fff, 0 0 10px #ff0, 0 0 20px #f0f;
+  animation: blink 0.8s infinite;
+  margin-top: 30px;
 }
-h1 {
-  color: #333;
-  margin-bottom: 20px;
-  font-size: 2.5em;
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
+
+.container {
+  padding: 30px;
+  text-align: center;
+}
+
 .dog-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  border: 2px solid #ddd;
-}
-p {
-  color: #555;
-  font-size: 1.1em;
-  margin-bottom: 25px;
-}
-.button-container {
-  display: flex;
-  flex-direction: column; /* Stack buttons vertically for better kinematic flow */
-  gap: 15px; /* Space between buttons */
+  width: 400px;
+  height: 400px;
+  border: 8px dotted red;
   margin-top: 20px;
+  /* Missing alt text — accessibility violation */
 }
+
+.description {
+  font-family: 'Courier New', monospace;
+  font-size: 18px;
+  color: #ff00ff;
+  margin-top: 10px;
+}
+
 .fetch-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 12px 25px;
-  border: none;
-  border-radius: 5px;
+  font-size: 8px; /* tiny clock-sized target */
+  padding: 3px 4px;
   cursor: pointer;
-  font-size: 1.1em;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  width: 100%; /* Make buttons full width for easier clicking */
+  border-radius: 0;
 }
-.fetch-button:hover {
-  background-color: #45a049;
-  transform: translateY(-2px);
+
+.btn1 {
+  position: absolute;
+  top: 100px;
+  left: 50px;
+  background-color: #ff0000;
+  border: 2px solid black;
+  font-family: Impact;
+  color: #fff;
 }
-.fetch-button:active {
-  background-color: #367c39;
-  transform: translateY(0);
+
+.btn2 {
+  position: absolute;
+  top: 400px;
+  right: 100px;
+  background-color: #0000ff;
+  border: dashed 3px yellow;
+  font-family: Georgia;
+  color: #ffff00;
 }
-/* Basic responsive adjustments */
-@media (min-width: 640px) {
-  .button-container {
-      flex-direction: row; /* Buttons side-by-side on larger screens */
-      justify-content: center;
-  }
-  .fetch-button {
-      width: auto; /* Auto width on larger screens */
-  }
+
+.btn3 {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #00ff00;
+  border: double 5px purple;
+  font-family: Arial Black;
+  color: #000;
 }

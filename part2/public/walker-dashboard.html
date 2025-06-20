@@ -82,7 +82,9 @@
             const res = await fetch('api/users/me');
             if(!res.ok) throw new Error('Failed to fetch user');
             const user = await res.json();
-            return user.user_id
+            return user.user_id;
+          } catch(err){
+            console.error('Error getting current user')
           }
         }
 

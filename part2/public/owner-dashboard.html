@@ -143,6 +143,7 @@
                 method: 'POST',
                 credentials: 'include'
             })
+            console.log('Logout response received', res);
             .then(res => res.json())
             .then(() => {
                 window.location.href = '/index.html';

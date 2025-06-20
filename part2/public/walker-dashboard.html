@@ -73,16 +73,18 @@
         async function applyToWalk(requestId) {
           const user = await getCurrentUser();
 
-          if(!user){
+          const currentUser = await getCurrentUser();
+
+          if (!currentUser) {
             error.value = 'Not logged in. Please login again.';
             return;
           }
-          try {
-            const res = await fetch(`/api/walks/${requestId}/apply`, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ walker_id: user.user_id })
-            });
+
+          const res = await fetch(`/api/walks/${requestId}/apply`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ walker_id: currentUser.user_id })  // use currentUser here!
+          });
             const result = await res.json();
 
             if (!res.ok) throw new Error(result.error || 'Application failed');

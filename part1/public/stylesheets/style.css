@@ -12,7 +12,11 @@ body {
 
 h1{
   font-size: 50px;
+  text-decoration: underline;
+  animation: flicker 1s infinite;
 }
+
+
 
 a {
   color: #00B7FF;

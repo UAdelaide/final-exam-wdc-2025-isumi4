@@ -109,7 +109,7 @@
             });
         },
         async loadDogs(){
-            const dogs=ref([]);
+
             try{
                 const res = await fetch('/api/dogs');
                 const dogsData = await res.json();
@@ -125,7 +125,7 @@
                         };
                     })
                 );
-                dogs.value = dogsWithPhotos;
+                this.dogs = dogsWithPhotos;
             } catch(err){
                 console.error('Error loading dogs:', err);
             }

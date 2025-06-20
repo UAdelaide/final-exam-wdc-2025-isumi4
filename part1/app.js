@@ -113,19 +113,14 @@ let db;
 // Route: /api/dogs
 app.get('/api/dogs', async (req, res) => {
     try {
-        const [rows] = await pool.execute(`
-            SELECT
-                d.name AS dog_name,
-                d.size,
-                u.username AS owner_username
-            FROM Dogs AS d
-            JOIN Users AS u ON d.owner_id = u.user_id;
-        `);
-        // Format the output as a single line JSON
-        res.json(rows);
-    } catch (error) {
-        console.error('Error fetching dogs:', error);
-        res.status(500).json({ message: 'Internal Server Error', error: error.message });
+      const [rows] = await db.execute(`
+        SELECT d.name AS dog_name, d.size, u.username AS owner_username
+        FROM Dogs d
+        LEFT JOIN Users u ON d.owner_id = u.user_id
+      `);
+      res.json(rows);
+    } catch (err) {
+      res.status(500).json({ error: 'Failed to fetch dogs' });
     }
 });
 

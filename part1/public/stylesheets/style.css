@@ -36,6 +36,20 @@ button-container {
   margin-top: 50px;
 }
 
+
+.fetch-button {
+  padding: 25px;
+  background-color: #00ff00;
+  border: none;
+  font-size: 24px;
+  cursor: none;
+  border-radius: 0;
+}
+
+.fetch-button:focus {
+  outline: none;
+}
+
 a {
   color: #00B7FF;
 }

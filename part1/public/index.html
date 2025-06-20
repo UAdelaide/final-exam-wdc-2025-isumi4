@@ -144,7 +144,7 @@
         this.fetchDog();
         setInterval(() => {
             this.changeFact();
-        }, 1000)
+        }, 1000);
       },
       methods: {
         async fetchDog() {
@@ -152,6 +152,7 @@
           const data = await res.json();
           this.dogImage = data.message;
         },
+        changeFact()
 
         moveButton(event){
             const btn = event.target;

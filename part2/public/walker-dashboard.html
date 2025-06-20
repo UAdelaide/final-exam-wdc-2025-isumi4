@@ -59,32 +59,30 @@
         }
 
         async function getCurrentUser() {
-          const res = await fetch('/api/users/me', {
-            credentials: 'include'  // crucial to send cookies/session
-          });
+        const res = await fetch('/api/users/me', {
+          credentials: 'include'  // crucial to send cookies/session
+        });
 
-          if (!res.ok) {
-            const errorJson = await res.json();
-            throw new Error(errorJson.error || 'Unknown error');
-          }
-          return res.json();
+        if (!res.ok) {
+          const errorJson = await res.json();
+          throw new Error(errorJson.error || 'Unknown error');
+        }
+        return res.json();
       }
 
         async function applyToWalk(requestId) {
           const user = await getCurrentUser();
 
-          const currentUser = await getCurrentUser();
-
-          if (!currentUser) {
+          if(!user){
             error.value = 'Not logged in. Please login again.';
             return;
           }
-
-          const res = await fetch(`/api/walks/${requestId}/apply`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ walker_id: currentUser.user_id })  // use currentUser here!
-          });
+          try {
+            const res = await fetch(`/api/walks/${requestId}/apply`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ walker_id: user.user_id })
+            });
             const result = await res.json();
 
             if (!res.ok) throw new Error(result.error || 'Application failed');

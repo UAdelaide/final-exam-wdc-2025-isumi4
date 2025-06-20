@@ -115,8 +115,6 @@ app.use(express.static(path.join(__dirname, 'public')));
   } catch (err) {
     console.error('Error setting up database. Is MySQL running?', err);
   }
-
-  app.use(express.static(path.join(__dirname, 'public')));
 })();
 
 module.exports = app;

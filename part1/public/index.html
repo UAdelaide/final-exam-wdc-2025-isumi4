@@ -1,57 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Express</title>
-    <link rel="stylesheet" href="/stylesheets/style.css">
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <meta charset="UTF-8">
+  <title>Dog of the Day</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <link rel="stylesheet" href="/stylesheets/dog-of-the-day.css">
 </head>
-
 <body>
-    <div id="app" class="container">
-        <h1>Dog of the Day!</h1>
-        <img v-if="dogImage" :src="dogImage" class="dog-img" alt="A random dog picture">
-        <!-- Added meaningful alt text for accessibility -->
-        <p>Breed: Fluffy Retrievador. Magical bark and rare fluffiness. See now.</p>
+  <div id="app" class="container">
+    <h1 class="neon-blink">🐶 Dog of the Day 🐾</h1>
+    <img v-if="dogImage" :src="dogImage" class="dog-img">
 
-        <div class="button-container">
-            <!-- While both buttons do the same thing, they are now clearly presented. -->
-            <button class="fetch-button" @click="fetchDog">Click Here to Get a New Dog Pic</button>
-            <button class="fetch-button" @click="fetchDog">NO, Click *This* to Refresh</button>
-        </div>
-    </div>
+    <p class="description">
+      Behold the majestic fluff from another dimension.
+    </p>
 
-    <script>
-        const {createApp} = Vue;
+    <button class="fetch-button btn1" @click="fetchDog">New Pic</button>
+    <button class="fetch-button btn2" @click="fetchDog">Surprise Me Again!</button>
+    <button class="fetch-button btn3" @click="fetchDog">Press If You Dare</button>
+  </div>
 
-        createApp({
-            data(){
-                return{
-                    dogImage: ''
-                };
-            },
-            mounted(){
-                this.fetchDog();
-            },
-            methods: {
-                async fetchDog(){
-                    try {
-                        // Corrected API endpoint: 'breeds' instead of 'brees'
-                        const res = await fetch('https://dog.ceo/api/breeds/image/random');
-                        if (!res.ok) {
-                            throw new Error(`HTTP error! status: ${res.status}`);
-                        }
-                        const data = await res.json();
-                        this.dogImage = data.message;
-                    } catch (error) {
-                        console.error("Failed to fetch dog image:", error);
-                        // Fallback image in case of error
-                        this.dogImage = 'https://placehold.co/600x400/FF0000/FFFFFF?text=Error+Loading+Dog';
-                    }
-                }
-            }
-        }) .mount('#app');
-    </script>
+  <script>
+    const { createApp } = Vue;
+
+    createApp({
+      data() {
+        return {
+          dogImage: ''
+        };
+      },
+      mounted() {
+        this.fetchDog();
+      },
+      methods: {
+        async fetchDog() {
+          const res = await fetch('https://dog.ceo/api/breeds/image/random');
+          const data = await res.json();
+          this.dogImage = data.message;
+        }
+      }
+    }).mount('#app');
+  </script>
 </body>
 </html>

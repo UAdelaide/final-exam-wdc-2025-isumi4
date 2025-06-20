@@ -60,6 +60,10 @@
 
         async function applyToWalk(requestId) {
           const walkerId = await getCurrentUser();
+
+          if(!walkerId){
+            error.value = 'Not logged in. Please login again.'
+          }
           try {
             const res = await fetch(`/api/walks/${requestId}/apply`, {
               method: 'POST',

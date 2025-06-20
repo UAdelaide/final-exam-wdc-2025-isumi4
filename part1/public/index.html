@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Dog of the Day</title>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
-
 <body>
   <div id="app" class="container">
-    <h1>Dog of the Day - MUST SEE!</h1>
+    <h1 class="neon-blink">🐶 Dog of the Day 🐾</h1>
     <img v-if="dogImage" :src="dogImage" class="dog-img">
-    <p>Breed: Legendary Ultra-Fluffy Retrievador™. Known for its magical bark and rare fluffiness. You are very lucky to see it.</p>
 
-    <div class="button-container">
-      <button class="fetch-button" @click="fetchDog">Click Here to Get a New Dog Pic</button>
-      <button class="fetch-button" @click="fetchDog">NO, Click *This* to Refresh</button>
-    </div>
+    <p class="description">
+      Behold the majestic fluff from another dimension.
+    </p>
+
+    <button class="fetch-button btn1" @click="fetchDog">New Pic</button>
+    <button class="fetch-button btn2" @click="fetchDog">Surprise Me Again!</button>
+    <button class="fetch-button btn3" @click="fetchDog">Press If You Dare</button>
   </div>
 
   <script>

@@ -105,6 +105,7 @@ let db;
         (2, 2, 3, 4)
       `);
     }
+    app.use('/api/dogs', dogsRouter(db));
   } catch (err) {
     console.error('Error setting up database. Is MySQL running?', err);
   }

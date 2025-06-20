@@ -70,9 +70,9 @@
       }
 
         async function applyToWalk(requestId){
-          const user = await getCurrentUser();
+          const currentUser = await getCurrentUser();
 
-          if(!user){
+          if(!cuser){
             error.value = 'Not logged in. Please login again.';
             return;
           }

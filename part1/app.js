@@ -13,7 +13,6 @@ app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Async IIFE to setup DB
 (async () => {
   try {
     const connection = await mysql.createConnection({
@@ -32,7 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
       database: 'DogWalkService'
     });
 
-    app.locals.db = db; // ✅ Share db with routes
+    app.locals.db = db;
 
     await db.execute(`
       CREATE TABLE IF NOT EXISTS Users (
@@ -104,7 +103,6 @@ app.use(express.static(path.join(__dirname, 'public')));
       `);
     }
 
-    // ✅ Mount routes AFTER db is ready
     const dogsRouter = require('./routes/dogs');
     app.use('/api/dogs', dogsRouter);
 

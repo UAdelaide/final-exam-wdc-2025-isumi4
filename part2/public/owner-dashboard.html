@@ -146,7 +146,13 @@
             method: 'POST',
             credentials: 'include'
           })
-          .then(res => res.json())
+          .then(async res => {
+            if (!res.ok) {
+              const text = await res.text();
+              throw new Error(`Logout failed: ${text}`);
+            }
+            return res.json();
+          })
           .then(() => {
             console.log('Redirecting to index.html');
             window.location.href = '/index.html';

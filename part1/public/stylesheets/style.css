@@ -45,7 +45,8 @@ body {
   cursor: pointer;
   border-radius: 0;
   width: 150px;
-  heigh: 40
+  heigh: 40px;
+  box-sizing: border-box;
 }
 
 .btn1 {

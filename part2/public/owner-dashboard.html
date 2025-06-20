@@ -137,23 +137,23 @@
   <script>
     const logoutBtn = document.getElementById('logoutBtn');
     if(logoutBtn){
-        logoutBtn.addEventListener('click', () => {
-          console.log('Logout clicked');
-            fetch('api/users/logout', {
-                method: 'POST',
-                credentials: 'include'
-            })
-
-            .then(res =>
+    logoutBtn.addEventListener('click', () => {
+        console.log('Logout clicked');
+        fetch('/api/users/logout', {
+            method: 'POST',
+            credentials: 'include'
+        })
+        .then(res => {
             console.log('Logout response received', res);
             return res.json();
-             })
-            .then(() => {
-                window.location.href = '/index.html';
-            })
-            .catch(err => console.error('Logout failed:', err));
-        });
-    }
+        })
+        .then(() => {
+            console.log('Redirecting to index.html');
+            window.location.href = '/index.html';
+        })
+        .catch(err => console.error('Logout failed:', err));
+    });
+}
   </script>
 </body>
 </html>

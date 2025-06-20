@@ -112,7 +112,9 @@
                 const dogsData = await res.json();
 
                 const dogsWithPhotos = await Promise.all(
-                    dogsData.map(async dog =>)
+                    dogsData.map(async dog => {
+                        const photoRes = await fetch('https://dog.ceo/api/breeds/image/random');
+                    })
                 )
             }
         }

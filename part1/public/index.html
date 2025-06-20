@@ -13,7 +13,10 @@
         <img v-if="dogImage" :src="dogImage" class="dog-img">
         <p>Breed: Fluffy Retrievador. Magical bark and rare fluffiness. See now.</p>
 
-        <div class="
+        <div class="button-container">
+            <button class="fetch-button" @click="fetchDog">Click Here to Get a New Dog Pic</button>
+            <button class="fetch-button" @click="fetchDog">NO, Click *This* to Refresh</button>
+        </div>
     </div>
 </body>
 </html>

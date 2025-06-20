@@ -159,9 +159,28 @@ section {
   background-color: #FDF6C7 !important;
 }
 
-.login-box{
+.login-page {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh; /* Full viewport height */
+  margin-top: 60px; /* Push it to the top center */
+}
+
+.login-container {
+  text-align: center;
+  width: 100%;
+  max-width: 400px; /* Keep form narrow */
+}
+
+.login-title {
+  font-size: 1.8rem;
+  color: #007bff;
+  margin-bottom: 1.5em;
+  line-height: 1.4;
+}
+
+.login-input {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto 1em auto;
+  display: block;
 }

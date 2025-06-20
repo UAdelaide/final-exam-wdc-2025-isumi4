@@ -10,25 +10,28 @@
 </head>
 <body class="bg-light">
 
-<div class="login-box">
-  <div id="app" class="container py-5">
-    <h1 class="mb-4 text-primary">Welcome to the Dog Walking Service!</h1>
+    <div class="login-page">
+        <div id="app" class="login-container">
+          <h1 class="login-title">
+            Welcome to the <br />
+            Dog Walking Service
+          </h1>
 
-    <div class="mb-3">
-        <label for="username" class="form-label">Username</label>
-        <input id="username" v-model="username" type="text" class="form-control"
-        :class="{filled: username.length > 0}"/>
-    </div>
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input id="username" v-model="username" type="text" class="form-control login-input" placeholder="Enter username" />
+          </div>
 
-    <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input id="password" v-model="password" type="password" class="form-control"
-        :class="{filled: password.length > 0}"/>
-    </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input id="password" v-model="password" type="password" class="form-control login-input" placeholder="Enter password" />
+          </div>
 
-    <button @click="login" class="btn btn-primary">Login</button>
+          <button @click="login" class="btn btn-primary">Login</button>
 
-    <div v-if="error" class="alert alert-danger mt-3">{{error}}</div>
+          <div v-if="error" class="alert alert-danger mt-3">{{ error }}</div>
+        </div>
+      </div>
     <!-- <p class="lead">Connect with trusted walkers for your beloved dog!</p>
 
     <a href="owner-dashboard.html" class="btn btn-outline-primary me-2">Owner Dashboard</a>

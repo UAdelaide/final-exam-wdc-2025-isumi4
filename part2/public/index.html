@@ -34,32 +34,31 @@
             <a href="owner-dashboard.html" class="btn btn-outline-primary me-2">Owner Dashboard</a>
             <a href="walker-dashboard.html" class="btn btn-outline-success">Walker Dashboard</a> -->
         </div>
-    </div>
-
-    <div class="mt-5">
-        <h2>All Registered Dogs</h2>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Dog ID</th>
-                    <th>Name</th>
-                    <th>Size</th>
-                    <th>Owner ID</th>
-                    <th>Photo</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="dog in dogs" :key="dog.dog_id">
-                    <td>{{dog.dog_id}}</td>
-                    <td>{{dog.name}}</td>
-                    <td>{{dog.size}}</td>
-                    <td>{{dog.owner_id}}</td>
-                    <td>
-                        <img :src="dog.photo" alt="Dog Photo" style="width:100px; height:auto;">
-                      </td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="mt-5">
+            <h2>All Registered Dogs</h2>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Dog ID</th>
+                        <th>Name</th>
+                        <th>Size</th>
+                        <th>Owner ID</th>
+                        <th>Photo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="dog in dogs" :key="dog.dog_id">
+                        <td>{{dog.dog_id}}</td>
+                        <td>{{dog.name}}</td>
+                        <td>{{dog.size}}</td>
+                        <td>{{dog.owner_id}}</td>
+                        <td>
+                            <img :src="dog.photo" alt="Dog Photo" style="width:100px; height:auto;">
+                          </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
   <script>

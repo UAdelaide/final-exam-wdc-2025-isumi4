@@ -65,9 +65,12 @@
           });
 
           if (!res.ok) {
-            const result = await res.json();
-            return Array.isArray(user) ? user[0] : user;
-            throw new Error('Not logged in');
+            const text = await res.text(); // get raw text for debugging
+            console.error('Error response text:', text);
+            throw new Error('Not logged in or server error');
+            // const result = await res.json();
+            // return Array.isArray(user) ? user[0] : user;
+            // throw new Error('Not logged in');
           }
 
           return await res.json();

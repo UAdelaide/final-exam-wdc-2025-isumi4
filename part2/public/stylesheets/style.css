@@ -156,5 +156,5 @@ section {
 }
 
 .filled{
-  background-color: yellow;
+  background-color: yellow !important;
 }

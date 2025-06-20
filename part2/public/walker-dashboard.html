@@ -73,7 +73,8 @@
             // throw new Error('Not logged in');
           }
 
-          return await res.json();
+          const data = await res.json(); // safe now, response is non-empty JSON
+          return data.user_id || data.user_id === 0 ? data.user_id : null;
         }
 
         async function applyToWalk(requestId) {

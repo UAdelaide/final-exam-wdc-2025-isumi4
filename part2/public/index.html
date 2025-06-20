@@ -55,8 +55,8 @@
                     <td>{{dog.size}}</td>
                     <td>{{dog.owner_id}}</td>
                     <td>
-                        <img :src="dog.photo" alt="Dog Photo" style="width:100px; height:auto;"
-                    </td>
+                        <img :src="dog.photo" alt="Dog Photo" style="width:100px; height:auto;">
+                      </td>
                 </tr>
             </tbody>
         </table>
@@ -70,7 +70,8 @@
         username: '',
         password: '',
         role: '',
-        error: ''
+        error: '',
+        dogs: []
         };
     },
     methods: {

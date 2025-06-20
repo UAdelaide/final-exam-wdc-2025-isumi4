@@ -72,15 +72,15 @@ router.post('/api/users/logout', (req,res) => {
     }
     res.clearCookie('connect.sid');
     method: 'POST',
-  credentials: 'include'
-})
-.then(() => {
-  console.log('Redirecting to index.html');
-  window.location.href = '/index.html';
-})
-.catch(err => console.error('Logout failed:', err));
-    res.json({message: 'Logged out successfully'});
-  });
+    credentials: 'include'
+  })
+  .then(() => {
+    console.log('Redirecting to index.html');
+    window.location.href = '/index.html';
+  })
+  .catch(err => console.error('Logout failed:', err));
+      res.json({message: 'Logged out successfully'});
 });
+
 
 module.exports = router;

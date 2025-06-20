@@ -65,22 +65,14 @@ router.post('/login', async (req, res) => {
   }
 });
 
-router.post('/api/users/logout', (req,res) => {
+router.post('api/users/logout', (req,res) => {
   req.session.destroy(err => {
     if(err){
       return res.status(500).json({error: 'Logout failed'});
     }
     res.clearCookie('connect.sid');
-    method: 'POST',
-    credentials: 'include'
-  })
-  .then(() => {
-    console.log('Redirecting to index.html');
-    window.location.href = '/index.html';
-  })
-  .catch(err => console.error('Logout failed:', err));
-      res.json({message: 'Logged out successfully'});
+    res.json({message: 'Logged out successfully'});
+  });
 });
-
 
 module.exports = router;

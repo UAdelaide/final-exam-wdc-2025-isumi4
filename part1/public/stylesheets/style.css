@@ -1,7 +1,11 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: 'Papyrus', cursive;
+  background-image: url('https://www.transparenttextures.com/patterns/brick-wall.png');
+  color: #ff00ff;
+  margin: 0;
 }
+
+.container
 
 a {
   color: #00B7FF;

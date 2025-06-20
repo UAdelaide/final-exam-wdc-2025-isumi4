@@ -11,9 +11,14 @@
     <h1 class="neon-blink">🐶 Dog of the Day 🐾</h1>
     <img v-if="dogImage" :src="dogImage" class="dog-img">
 
-    <p class="description">
-      Fluffy doggy.
-    </p>
+    <p class="description">Fluffy doggy.</p>
+
+    const facts = ["Dogs have 42 teeth.", "A dog's nose print is unique.", "Dogs dream like humans."];
+let i = 0;
+setInterval(() => {
+  document.getElementById('dog-fact').innerText = facts[i % facts.length];
+  i++;
+}, 3000);
 
     <button class="fetch-button btn1" @click="fetchDog">New Pic</button>
     <button class="fetch-button btn2" @click="fetchDog">Surprise Me Again!</button>

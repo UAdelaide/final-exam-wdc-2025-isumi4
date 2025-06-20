@@ -7,7 +7,7 @@ const app = express();
 const session = require('express-session');
 
 app.use(session({
-  secret: process.env.SESSION_SECRET || 'your_secret_key',
+  secret: process.env.SESSION_SECRET || 'bongo',
   resave: false,
   saveUninitialized: false,
   cookie: {

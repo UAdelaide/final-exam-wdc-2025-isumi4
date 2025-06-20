@@ -152,7 +152,8 @@
           const data = await res.json();
           this.dogImage = data.message;
         },
-        changeFact()
+        changeFact() = (this.currentFactIndex + 1) % this.facts.length;
+        
 
         moveButton(event){
             const btn = event.target;

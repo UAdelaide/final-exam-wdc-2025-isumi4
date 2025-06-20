@@ -74,6 +74,9 @@
         dogs: []
         };
     },
+    mounted(){
+        this.loadDogs();
+    },
     methods: {
         login() {
             console.log('Attempting login with:', this.username, this.password);

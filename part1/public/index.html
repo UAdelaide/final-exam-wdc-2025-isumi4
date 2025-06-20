@@ -39,7 +39,10 @@
           this.dogImage = data.message;
         },
 
-        move
+        moveButton(event){
+            const btn = event.target;
+            const  container = btn.parentElement;
+        }
       }
     }).mount('#app');
   </script>

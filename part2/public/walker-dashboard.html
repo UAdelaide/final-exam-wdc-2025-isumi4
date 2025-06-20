@@ -64,8 +64,7 @@
             if (!res.ok) throw new Error('Not logged in');
             return await res.json(); // should return { user_id: ..., ... }
           } catch (err) {
-            console.error('getCurrentUser error:', err);
-            return null;
+            error.value = ''
           }
       }
 

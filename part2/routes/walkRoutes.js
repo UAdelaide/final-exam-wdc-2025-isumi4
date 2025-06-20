@@ -36,16 +36,12 @@ router.post('/', async (req, res) => {
 });
 
 // POST an application to walk a dog (from walker)
+// POST an application to walk a dog (from walker)
 router.post('/:id/apply', async (req, res) => {
   const requestId = req.params.id;
   const { walker_id } = req.body;
 
-  if (!walker_id || !requestId) {
-    return res.status(400).json({ error: 'Missing walker_id or requestId' });
-  }
-
   try {
-    console.log("DEBUG requestId:", requestId, "walker_id:", walker_id);
     await db.query(`
       INSERT INTO WalkApplications (request_id, walker_id)
       VALUES (?, ?)
@@ -57,12 +53,10 @@ router.post('/:id/apply', async (req, res) => {
       WHERE request_id = ?
     `, [requestId]);
 
-    console.log("Apply Route - requestId:", requestId, "walker_id:", walker_id);
-
     res.status(201).json({ message: 'Application submitted' });
   } catch (error) {
-    console.error('SQL Error applying to walk:', error.message);
-    res.status(500).json({ error: error.message || 'Failed to apply for walk' });
+    console.error('SQL Error:', error);
+    res.status(500).json({ error: 'Failed to apply for walk' });
   }
 });
 

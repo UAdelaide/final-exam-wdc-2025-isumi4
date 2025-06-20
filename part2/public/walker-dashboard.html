@@ -62,13 +62,14 @@
           const walkerId = await getCurrentUser();
 
           if(!walkerId){
-            error.value = 'Not logged in. Please login again.'
+            error.value = 'Not logged in. Please login again.';
+            return;
           }
           try {
             const res = await fetch(`/api/walks/${requestId}/apply`, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ walker_id: user })
+              body: JSON.stringify({ walker_id: walkerId })
             });
             const result = await res.json();
 

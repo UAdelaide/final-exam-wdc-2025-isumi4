@@ -66,6 +66,7 @@
 
           if (!res.ok) {
             const result = await res.json();
+            return Array.isArray(user) ? user[0] : user;
             throw new Error('Not logged in');
           }
 

@@ -162,5 +162,6 @@ section {
 .container{
   min-height: 100vh;
   display: flex;
-  flex-direction: ;
+  flex-direction: column;
+  align-items: center;
 }

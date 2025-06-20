@@ -34,19 +34,18 @@
   <script>
     const { createApp } = Vue;
     createApp({
-      data() {
+    data() {
         return {
-        //   message: 'Welcome to the Dog Walking Service!'
         username: '',
         password: '',
         error: ''
-        },
-        methods: {
-            login(){
-                alert(`Loggin in with username: ${this.username} and password: ${this.password}`);
-            }
+        };
+    },
+    methods: {
+        login() {
+        alert(`Logging in with username: ${this.username} and password: ${this.password}`);
         }
-      }
+    }
     }).mount('#app');
   </script>
 

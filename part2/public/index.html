@@ -48,7 +48,10 @@
     },
     methods: {
         login() {
-        alert(`Logging in with username: ${this.username} and password: ${this.password}`);
+            fetch('/api/users/login',{
+                method:'POST',
+                
+            })
         }
     }
     }).mount('#app');

@@ -72,7 +72,7 @@
         async function applyToWalk(requestId){
           const currentUser = await getCurrentUser();
 
-          if(!cuser){
+          if(!currentUser){
             error.value = 'Not logged in. Please login again.';
             return;
           }

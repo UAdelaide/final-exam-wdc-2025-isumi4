@@ -83,16 +83,17 @@
           }
         }
 
-        async function getCurrentUser(){
-          try{
-            const res = await fetch('api/users/me');
-            if(!res.ok) throw new Error('Failed to fetch user');
-            const user = await res.json();
-            return user.user_id;
-          } catch(err){
-            console.error('Error getting current user:', err);
-            return null;
+        async function getCurrentUser() {
+          const res = await fetch('/api/users/me', {
+            method: 'GET',
+            credentials: 'include'  // ← this is crucial
+          });
+
+          if (!res.ok) {
+            throw new Error('Not logged in');
           }
+
+          return await res.json(); // should return { user_id, ... }
         }
 
         onMounted(() => {

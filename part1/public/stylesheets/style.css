@@ -5,7 +5,14 @@ body {
   margin: 0;
 }
 
-.container
+.container{
+  margin: 100px 200px;
+  text-align: justify;
+}
+
+h1{
+  font-size: 50px;
+}
 
 a {
   color: #00B7FF;

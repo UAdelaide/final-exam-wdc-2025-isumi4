@@ -57,6 +57,9 @@
                 })
             })
             .then(res => res.json())
+            .then(data => {
+                if(data.error)
+            })
         }
     }
     }).mount('#app');

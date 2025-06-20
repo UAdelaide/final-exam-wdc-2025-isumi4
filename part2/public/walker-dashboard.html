@@ -85,12 +85,12 @@
 
         async function getCurrentUser() {
           const res = await fetch('/api/users/me', {
-            method: 'GET',
+
             credentials: 'include'  // ← this is crucial
           });
 
           if (!res.ok) {
-            const result = await res.json()
+            const result = await res.json();
             throw new Error('Not logged in');
           }
 

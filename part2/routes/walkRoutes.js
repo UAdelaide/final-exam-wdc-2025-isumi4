@@ -40,9 +40,6 @@ router.post('/:id/apply', async (req, res) => {
   const requestId = req.params.id;
   const { walker_id } = req.body;
 
-  console.log('DEBUG requestId:', requestId);
-  console.log('DEBUG walker_id:', walker_id);
-
   if (!walker_id || !requestId) {
     return res.status(400).json({ error: 'Missing walker_id or requestId' });
   }

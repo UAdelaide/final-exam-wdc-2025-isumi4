@@ -78,5 +78,7 @@ body {
 }
 
 .button-container{
-  
+  position: relative;
+  height: 600px;
+  width: 100%;
 }

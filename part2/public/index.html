@@ -94,8 +94,10 @@
                 credentials: 'include'
             })
             .then(res => res.json())
-            .then(())
-        })
+            .then(() => {
+                window.location.href = '/login.html';
+            });
+        });
     }
   </script>
 </body>

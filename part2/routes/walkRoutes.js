@@ -54,6 +54,8 @@ router.post('/:id/apply', async (req, res) => {
       UPDATE WalkRequests SET status = 'accepted' WHERE request_id = ?
     `, [requestId]);
 
+    console.log("Apply Route - requestId:", requestId, "walker_id:", walker_id);
+
     res.status(201).json({ message: 'Application submitted' });
   } catch (error) {
     console.error('SQL Error applying to walk:', error.message);

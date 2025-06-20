@@ -1,19 +1,20 @@
-const express = require('express');
-const path = require('path');
-require('dotenv').config();
+var express = require('express');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
 
-const app = express();
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
 
-// Middleware
+var app = express();
+
+app.use(logger('dev'));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
 
-// Routes
-const walkRoutes = require('./routes/walkRoutes');
-const userRoutes = require('./routes/userRoutes');
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
 
-app.use('/api/walks', walkRoutes);
-app.use('/api/users', userRoutes);
-
-// Export the app instead of listening here
 module.exports = app;

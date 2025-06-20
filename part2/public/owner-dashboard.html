@@ -138,6 +138,7 @@
     const logoutBtn = document.getElementById('logoutBtn');
     if(logoutBtn){
         logoutBtn.addEventListener('click', () => {
+          console.log('Logout clicked');
             fetch('api/users/logout', {
                 method: 'POST',
                 credentials: 'include'

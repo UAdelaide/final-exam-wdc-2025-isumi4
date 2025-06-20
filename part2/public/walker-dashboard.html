@@ -60,20 +60,29 @@
 
         async function getCurrentUser() {
           const res = await fetch('/api/users/me', {
-
-            credentials: 'include'
+            credentials: 'include'  // important if using cookies/session auth
           });
 
           if (!res.ok) {
-            const text = await res.text(); // get raw text for debugging
-            console.error('Error response text:', text);
-            throw new Error('Not logged in or server error');
-            // const result = await res.json();
-            // return Array.isArray(user) ? user[0] : user;
-            // throw new Error('Not logged in');
+            // Try to read error message if possible
+            let errorMessage = 'Unknown error';
+            try {
+              const errJson = await res.json();
+              errorMessage = errJson.error || errorMessage;
+            } catch {
+              // Ignore JSON parse error, keep default message
+            }
+            throw new Error(errorMessage);
           }
 
-          const data = await res.json(); // safe now, response is non-empty JSON
+          // Before parsing JSON, check if response has content
+          const text = await res.text();
+          if (!text) {
+            throw new Error('Empty response from server');
+          }
+          const data = JSON.parse(text);
+
+          // Return user_id or null if not present
           return data.user_id || data.user_id === 0 ? data.user_id : null;
         }
 

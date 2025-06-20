@@ -11,3 +11,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+const dbConfig = {
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'DogWalkService',
+};
+

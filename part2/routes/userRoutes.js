@@ -72,6 +72,9 @@ function ensureOwner(req, res, next){
     res.redireect('/');
   }
 }
+function ensureWalker(req, res, next){
+  if(req.session && req.session.user && req.session.user.role === 'owner')
+}
 
 router.post('/logout', (req,res) => {
   req.session.destroy(err => {

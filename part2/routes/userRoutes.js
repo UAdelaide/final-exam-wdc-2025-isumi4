@@ -66,25 +66,6 @@ router.post('/login', async (req, res) => {
   }
 });
 
-function ensureOwner(req, res, next){
-  if(req.session && req.session.user && req.session.user.role === 'owner'){
-    next();
-  } else{
-    res.redireect('/');
-  }
-}
-function ensureWalker(req, res, next){
-  if(req.session && req.session.user && req.session.user.role === 'walker'){
-    next();
-  } else{
-    res.redireect('/');
-  }
-}
-
-app.get('/owner-dashboard.html', ensureOwner, (req, res) => {
-  res.sendFile(__dirname + '/public/owner-dashboard.html');
-});
-
 router.post('/logout', (req,res) => {
   req.session.destroy(err => {
     if(err){

@@ -66,7 +66,11 @@ router.post('/login', async (req, res) => {
 });
 
 function ensureOwner(req, res, next){
-  if(req.session && req.session.user && req.session.user.role === 'owner')
+  if(req.session && req.session.user && req.session.user.role === 'owner'){
+    next();
+  } else{
+    res.redireect('/');
+  }
 }
 
 router.post('/logout', (req,res) => {

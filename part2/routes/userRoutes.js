@@ -65,7 +65,9 @@ router.post('/login', async (req, res) => {
   }
 });
 
-
+function ensureOwner(req, res, next){
+  
+}
 
 router.post('/logout', (req,res) => {
   req.session.destroy(err => {

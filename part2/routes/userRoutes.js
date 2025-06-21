@@ -82,8 +82,8 @@ function ensureWalker(req, res, next){
 }
 
 app.get('/owner-dashboard.html', ensureOwner, (req, res) => {
-  res.sendFile(__dirname + '/public')
-})
+  res.sendFile(__dirname + '/public/owner-dashboard.html');
+});
 
 router.post('/logout', (req,res) => {
   req.session.destroy(err => {

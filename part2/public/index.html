@@ -137,7 +137,12 @@
     fetch('api/users/session')
         .then(res => res.json())
         .then(data => {
-            if(!data.user || data.user.role !== 'owner')
+            if(!data.user || data.user.role !== 'owner'){
+                window.location.href = '/';
+            }
+        })
+        .catch(err => {
+            
         })
   </script>
 

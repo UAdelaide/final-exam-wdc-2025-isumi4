@@ -35,14 +35,14 @@ function ensureOwner(req, res, next){
     if(req.session && req.session.user && req.session.user.role === 'owner'){
       next();
     } else{
-      res.redireect('/');
+      res.redirect('/');
     }
   }
   function ensureWalker(req, res, next){
     if(req.session && req.session.user && req.session.user.role === 'walker'){
       next();
     } else{
-      res.redireect('/');
+      res.redirect('/');
     }
   }
 

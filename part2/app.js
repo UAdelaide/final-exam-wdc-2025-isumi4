@@ -17,14 +17,6 @@ app.use(session({
   }
 }));
 
-app.get('/api/users/session', (req, res) => {
-    if (req.session && req.session.user) {
-        res.json({ user: req.session.user });
-    } else {
-        res.status(401).json({ error: 'Not logged in' });
-    }
-});
-
 // Middleware
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '/public')));

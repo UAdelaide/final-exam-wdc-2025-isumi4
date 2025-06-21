@@ -164,7 +164,7 @@
           message,
           error,
           submitWalkRequest,
-          myDogs
+          myDogs,
           logout
         };
       }
@@ -172,35 +172,6 @@
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      console.log("Logout script loaded");
-      const logoutBtn = document.getElementById('logoutBtn');
-      if (logoutBtn) {
-        console.log('Logout button found');
-        logoutBtn.addEventListener('click', () => {
-          console.log('Logout clicked');
-          fetch('/api/users/logout', {
-            method: 'POST',
-            credentials: 'include'
-          })
-          .then(async res => {
-            if (!res.ok) {
-              const text = await res.text();
-              throw new Error(`Logout failed: ${text}`);
-            }
-            return res.json();
-          })
-          .then(() => {
-            console.log('Redirecting to index.html');
-            window.location.href = '/index.html';
-          })
-          .catch(err => console.error('Logout failed:', err));
-        });
-      } else {
-        console.log('Logout button NOT found');
-      }
-    });
-  </script>
+  
 </body>
 </html>

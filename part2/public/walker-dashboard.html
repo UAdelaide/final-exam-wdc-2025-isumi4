@@ -136,5 +136,17 @@
       }
     });
   </script>
+  <script>
+    fetch('/api/users/session')
+      .then(res => res.json())
+      .then(data => {
+        if (!data.user || data.user.role !== 'owner') {
+          window.location.href = '/';
+        }
+      })
+      .catch(() => {
+        window.location.href = '/';
+      });
+    </script>
 </body>
 </html>

@@ -124,24 +124,24 @@
           }
         }
         async function logout() {
-  try {
-    const res = await fetch('/api/users/logout', {
-      method: 'POST',
-      credentials: 'include'
-    });
+          try {
+            const res = await fetch('/api/users/logout', {
+              method: 'POST',
+              credentials: 'include'
+            });
 
-    if (!res.ok) {
-      const text = await res.text();
-      throw new Error(`Logout failed: ${text}`);
-    }
+            if (!res.ok) {
+              const text = await res.text();
+              throw new Error(`Logout failed: ${text}`);
+            }
 
-    await res.json();
-    window.location.href = '/index.html';
-  } catch (err) {
-    console.error('Logout failed:', err);
-    error.value = 'Logout failed';
-  }
-}
+            await res.json();
+            window.location.href = '/index.html';
+          } catch (err) {
+            console.error('Logout failed:', err);
+            error.value = 'Logout failed';
+          }
+        }
 
         async function loadMyDogs(){
           try{
@@ -165,6 +165,7 @@
           error,
           submitWalkRequest,
           myDogs
+          logout
         };
       }
     }).mount('#app');

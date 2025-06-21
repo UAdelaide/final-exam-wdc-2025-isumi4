@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models/db');
+const app = require('../app');
 
 // GET all users (for admin/testing)
 router.get('/', async (req, res) => {
@@ -79,6 +80,8 @@ function ensureWalker(req, res, next){
     res.redireect('/');
   }
 }
+
+app.get('/owner-dashboard.html', ensureOwner, (req, res) =>)
 
 router.post('/logout', (req,res) => {
   req.session.destroy(err => {

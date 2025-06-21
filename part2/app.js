@@ -23,7 +23,7 @@ app.get('/api/users/session', (req, res) => {
     } else {
       res.status(401).json({ error: 'Not logged in' });
     }
-  });
+});
 
 // Middleware
 app.use(express.json());
